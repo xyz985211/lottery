@@ -1,0 +1,5 @@
+com\kou\lottery\interfaces\facade\LotteryActivityBoothImpl.class
+com\kou\lottery\interfaces\assembler\AwardMappingImpl.class
+com\kou\lottery\interfaces\assembler\IMapping.class
+com\kou\lottery\LotteryApplication.class
+com\kou\lottery\interfaces\assembler\AwardMapping.class

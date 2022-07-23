@@ -1,0 +1,35 @@
+package com.kou.lottery.infrastructure.dao;
+
+import com.kou.lottery.infrastructure.po.RuleTreeNode;
+
+import java.util.List;
+
+/**
+ * @author MiManchi
+ * Date: 2022/6/11 17:41
+ * Package: com.kou.lottery.infrastructure.dao
+ */
+public interface RuleTreeNodeDao {
+
+    /**
+     * 查询规则树节点
+     * @param treeId    规则树ID
+     * @return          规则树节点集合
+     */
+    List<RuleTreeNode> queryRuleTreeNodeList(Long treeId);
+
+    /**
+     * 查询规则树节点数量
+     * @param treeId    规则树ID
+     * @return          节点数量
+     */
+    int queryTreeNodeCount(Long treeId);
+
+    /**
+     * 查询规则树节点
+     *
+     * @param treeId    规则树ID
+     * @return          节点集合
+     */
+    List<RuleTreeNode> queryTreeRulePoint(Long treeId);
+}

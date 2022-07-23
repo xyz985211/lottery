@@ -1,0 +1,5 @@
+com\kou\lottery\rpc\dto\AwardDTO.class
+com\kou\lottery\rpc\LotteryActivityBooth.class
+com\kou\lottery\rpc\req\DrawReq.class
+com\kou\lottery\rpc\res\DrawRes.class
+com\kou\lottery\rpc\req\QuantificationDrawReq.class

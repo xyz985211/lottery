@@ -1,0 +1,11 @@
+com\kou\lottery\application\worker\LotteryXxlJob.class
+com\kou\lottery\application\process\res\RuleQuantificationCrowdResult.class
+com\kou\lottery\application\mq\producer\RabbitMqProducer.class
+com\kou\lottery\application\mq\consumer\LotteryActivityPartakeRecordListener.class
+com\kou\lottery\application\process\req\DrawProcessReq.class
+com\kou\lottery\application\mq\config\RabbitMqConfig.class
+com\kou\lottery\application\process\ActivityProcess.class
+com\kou\lottery\application\worker\LotteryXxlJobConfig.class
+com\kou\lottery\application\process\res\DrawProcessResult.class
+com\kou\lottery\application\process\impl\ActivityProcessImpl.class
+com\kou\lottery\application\mq\consumer\LotteryInvoiceListener.class

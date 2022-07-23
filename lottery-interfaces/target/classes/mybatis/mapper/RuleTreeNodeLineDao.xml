@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kou.lottery.infrastructure.dao.RuleTreeNodeLineDao">
+
+    <select id="queryRuleTreeNodeLineList" resultType="com.kou.lottery.infrastructure.po.RuleTreeNodeLine">
+        SELECT id, tree_id, node_id_from, node_id_to, rule_limit_type, rule_limit_value
+        FROM rule_tree_node_line
+        where tree_id = #{treeId} and node_id_from = #{nodeIdFrom}
+    </select>
+
+    <select id="queryTreeNodeLineCount" resultType="java.lang.Integer">
+        select count(id) from rule_tree_node_line where tree_id = #{treeId}
+    </select>
+
+</mapper>

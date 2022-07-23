@@ -1,0 +1,17 @@
+com\kou\lottery\test\interfaces\LotteryActivityBoothTest$1.class
+com\kou\lottery\test\dao\UserTakeActivityDaoTest.class
+com\kou\lottery\test\ApiTest$3.class
+com\kou\lottery\test\domain\RuleTest.class
+com\kou\lottery\test\dao\UserStrategyExportDaoTest.class
+com\kou\lottery\test\dao\ActivityDaoTest.class
+com\kou\lottery\test\domain\ActivityTest.class
+com\kou\lottery\test\application\RabbitMqProducerTest.class
+com\kou\lottery\test\interfaces\LotteryActivityBoothTest.class
+com\kou\lottery\test\application\ActivityProcessTest.class
+com\kou\lottery\test\domain\RuleTest$1.class
+com\kou\lottery\test\ApiTest.class
+com\kou\lottery\test\domain\SupportTest.class
+com\kou\lottery\test\ApiTest$1.class
+com\kou\lottery\test\ApiTest$2.class
+com\kou\lottery\test\SpringRunnerTest.class
+com\kou\lottery\test\domain\DrawAlgorithmTest.class

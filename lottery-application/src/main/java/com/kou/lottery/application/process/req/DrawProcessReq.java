@@ -1,0 +1,41 @@
+package com.kou.lottery.application.process.req;
+
+/**
+ * @author MiManchi
+ * Date: 2022/6/8 22:35
+ * Package: com.kou.lottery.application.process.req
+ *
+ * 抽奖请求
+ */
+public class DrawProcessReq {
+
+    /** 用户ID */
+    private String uId;
+
+    /** 活动ID */
+    private Long activityId;
+
+    public DrawProcessReq() {
+    }
+
+    public DrawProcessReq(String uId, Long activityId) {
+        this.uId = uId;
+        this.activityId = activityId;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
+
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
+}

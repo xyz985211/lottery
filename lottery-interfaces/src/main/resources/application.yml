@@ -1,0 +1,102 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    #  服务器
+    host: 106.12.157.42
+    #  端口
+    port: 3920
+    username: mimanchi
+    password: gannima0.++-
+    #  虚拟主机
+    #virtual-host: /
+    #  发布确认机制是否启用
+    publisher-confirm-type: correlated
+    #  发布返回是否启用
+    publisher-returns: true
+    #  链接超时。单位ms。0表示无穷大不超时
+    connection-timeout: 5000
+    listener:
+      simple:
+        #设置签收模式：手工签收
+        acknowledge-mode: manual
+        #设置当前消费者数量(线程数)
+        concurrency: 5
+        #设置消费者最大并发数量
+        max-concurrency: 10
+    template:
+      mandatory: true
+      retry:
+        #  开启重试  默认false
+        enabled: true
+        #  重试时间 默认1000ms
+        #initial-interval: 1000ms
+        #  重试的次数  默认是3
+        #max-attempts: 3
+        #  重试时间的最大间隔时间 默认10000ms
+        #max-interval: 10000ms
+        #  重试的间隔乘数  比如配2.0 第一次就间隔10s 第二次 间隔20s 第三次间隔40s ****
+        #multiplier: 1
+  redis:
+    host: 106.12.157.42
+    port: 6006
+    password: gannima0.++-
+    connect-timeout: 3000
+    database: 0
+xxl:
+  job:
+    admin:
+      addresses: http://106.12.157.42:2300/xxl-job-admin
+    executor:
+      address:
+      appname: lottery-job
+      ip:
+      port: 9998
+      logpath: F:\Java\xxl-job_logs
+      logretentiondays: 50
+    accessToken:
+
+# 多数据源路由配置
+mini-db-router:
+  jdbc:
+    datasource:
+      dbCount: 2
+      tbCount: 4
+      default: db00
+      routerKey: uId
+      list: db01,db02
+      db00:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery?useUnicode=true&serverTimezone=UTC&useSSL=false&characterEncoding=utf-8
+        username: root
+        password: 12345
+      db01:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery_01?useUnicode=true&serverTimezone=UTC&useSSL=false&characterEncoding=utf-8
+        username: root
+        password: 12345
+      db02:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/lottery_02?useUnicode=true&serverTimezone=UTC&useSSL=false&characterEncoding=utf-8
+        username: root
+        password: 12345
+
+mybatis-plus:
+  type-aliases-package: com.kou.lottery.infrastructure.po
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  #configuration:
+    #map-underscore-to-camel-case: false
+
+# Dubbo 广播方式配置
+dubbo:
+  application:
+    name: Lottery
+    version: 1.0.0
+  registry:
+    address: multicast://224.5.6.7:1234
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.kou.lottery.rpc

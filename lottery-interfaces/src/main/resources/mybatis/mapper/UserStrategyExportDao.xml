@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kou.lottery.infrastructure.dao.UserStrategyExportDao">
+    <insert id="insert" parameterType="UserStrategyExport">
+        INSERT INTO user_strategy_export
+        (u_id, activity_id, order_id, strategy_id, strategy_mode,
+         grant_type, grant_date, grant_state, award_id, award_type,
+         award_name, award_content, uuid, create_time, update_time)
+        VALUES
+            (#{uId},#{activityId},#{orderId},#{strategyId},#{strategyMode},
+             #{grantType},#{grantDate},#{grantState},#{awardId},#{awardType},
+             #{awardName},#{awardContent},#{uuid},now(),now())
+    </insert>
+
+    <select id="queryUserStrategyExportByUId" resultType="UserStrategyExport">
+        SELECT id, u_id, activity_id, order_id, strategy_id, strategy_mode,
+               grant_type, grant_date, grant_state, award_id, award_type,
+               award_name, award_content, uuid, create_time, update_time
+        FROM user_strategy_export
+        WHERE u_id = #{uId}
+    </select>
+
+    <update id="updateUserAwardState" parameterType="UserStrategyExport">
+        UPDATE user_strategy_export SET grant_state = #{grantState}, grant_date = now(), update_time = now()
+        WHERE u_id = #{uId} AND order_id = #{orderId} AND award_id = #{awardId}
+    </update>
+
+    <update id="updateInvoiceMqState" parameterType="UserStrategyExport">
+        UPDATE user_strategy_export SET mq_state = #{mqState}, update_time = now()
+        WHERE u_id = #{uId} AND order_id = #{orderId}
+    </update>
+
+    <select id="scanInvoiceMqState" resultType="UserStrategyExport">
+        SELECT u_id, order_id, award_id, award_type, award_name, award_content
+        FROM user_strategy_export
+        WHERE mq_state = 2 OR ( mq_state = 0 AND now() - create_time > 1800000 )
+    </select>
+
+</mapper>

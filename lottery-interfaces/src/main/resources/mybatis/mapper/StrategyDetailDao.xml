@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kou.lottery.infrastructure.dao.StrategyDetailDao">
+
+    <select id="queryNoStockStrategyAwardList" parameterType="java.lang.Long" resultType="java.lang.String">
+        select award_id AS awardId
+        from strategy_detail
+        where strategy_id = #{strategyId} AND award_surplus_count = 0
+    </select>
+
+    <update id="deductStock" parameterType="com.kou.lottery.infrastructure.po.StrategyDetail">
+        update strategy_detail set award_surplus_count = award_surplus_count - 1
+        where strategy_id = #{strategyId} AND award_id = #{awardId} AND award_surplus_count > 0
+    </update>
+</mapper>
